@@ -1,0 +1,20 @@
+.navbar{
+    border-bottom: 1px solid #d4d4d4;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.navItem ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
+.navItem ul li {
+    margin-right: 10px;
+}
+
+.navItem ul li a {
+    text-decoration: none;
+}
