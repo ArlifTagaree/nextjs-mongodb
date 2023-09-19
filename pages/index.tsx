@@ -1,18 +1,17 @@
-import Head from 'next/head'
-import clientPromise from '../lib/mongodb'
-import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
-import Nav from '../components/Nav'
-
+import Head from "next/head";
+import clientPromise from "../lib/mongodb";
+import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
+import Layout from "../components/Layout";
 
 type ConnectionStatus = {
-  isConnected: boolean
-}
+  isConnected: boolean;
+};
 
 export const getServerSideProps: GetServerSideProps<
   ConnectionStatus
 > = async () => {
   try {
-    await clientPromise
+    await clientPromise;
     // `await clientPromise` will use the default database passed in the MONGODB_URI
     // However you can use another database (e.g. myDatabase) by replacing the `await clientPromise` with the following code:
     //
@@ -24,14 +23,14 @@ export const getServerSideProps: GetServerSideProps<
 
     return {
       props: { isConnected: true },
-    }
+    };
   } catch (e) {
-    console.error(e)
+    console.error(e);
     return {
       props: { isConnected: false },
-    }
+    };
   }
-}
+};
 
 export default function Home({
   isConnected,
@@ -42,25 +41,21 @@ export default function Home({
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main>
-        <Nav/>
-      </main>
-
+      <Layout>
+        <h1>hello</h1>
+      </Layout>
       <footer>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
         </a>
       </footer>
 
       <style jsx>{`
-        
-
         main {
           padding: 5rem 0;
           flex: 1;
@@ -201,5 +196,5 @@ export default function Home({
         }
       `}</style>
     </div>
-  )
+  );
 }
